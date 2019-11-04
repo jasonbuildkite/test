@@ -2,7 +2,7 @@ steps:
   - label: "One :golang:"
     command: "make test"
 
-- wait
+  - wait
 
   - label: "Two :golang:"
     command: "make test"
