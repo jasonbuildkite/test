@@ -1,6 +1,8 @@
 steps:
-  - name: "One :golang:"
+  - label: "One :golang:"
     command: "make test"
-steps:
-  - name: "Two :golang:"
+
+- wait
+
+  - label: "Two :golang:"
     command: "make test"
