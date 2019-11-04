@@ -1,3 +1,3 @@
 steps:
-  - name: ":golang:"
+  - name: "GO :golang:"
     command: "make test"
