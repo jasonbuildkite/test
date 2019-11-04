@@ -1,3 +1,6 @@
 steps:
-  - name: "GO :golang:"
+  - name: "One :golang:"
+    command: "make test"
+steps:
+  - name: "Two :golang:"
     command: "make test"
