@@ -1,8 +1,42 @@
+# steps:
+#   - label: "One :golang:"
+#     commands: make test
+
+#   - wait
+
+#   - label: set meta data
+#     command: buildkite-agent meta-data set "REPO_NAME" "bar"
+
+#   - wait
+
+#   - label: shell meta
+#     env:
+#       REPO_NAME: "NO REPO_NAME"
+#     commands: 
+#       - ./.buildkite/script.sh
+#       - 'echo $$REPO_NAME'
+
+#   - wait
+
+#   - label: perisited env
+#     commands: 
+#       - 'echo $$REPO_NAME'
+
 steps:
   - label: "One :golang:"
-    command: "make test"
+    commands: make test
+
+  - wait
+  
+  - trigger: "hack-pipeline"
+    label: ":rocket: build"
+    build:
+      message: "${BUILDKITE_MESSAGE}"
+      commit: "${BUILDKITE_COMMIT}"
+      branch: "${BUILDKITE_BRANCH}"
 
   - wait
 
-  - label: "Two :golang:"
-    command: "make test"
+  - label: perisited env
+    commands: 
+      - 'echo done'
