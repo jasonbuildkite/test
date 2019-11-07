@@ -23,7 +23,7 @@
 #       - 'echo $$REPO_NAME'
 
 steps:
-  - label: "One :golang:"
+  - label: "test"
     commands: make test
 
   - wait
