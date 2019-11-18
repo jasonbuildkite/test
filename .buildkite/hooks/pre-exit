@@ -1,4 +1,4 @@
 set -eu
 echo '--- :house_with_garden: Call Script'
 
-../script.sh
+touch /tmp/dummy.txt
