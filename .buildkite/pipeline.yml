@@ -25,7 +25,3 @@
 steps:
   - label: "test"
     commands: make test
-  - wait
-  - label: perisited env
-    commands:
-      - "echo done"

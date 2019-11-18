@@ -1,4 +1,4 @@
 set -eu
-echo '--- :house_with_garden: PRE-EXIT CALLED'
+echo '--- :house_with_garden: Call Script'
 
-# export REPO_NAME=$(buildkite-agent meta-data get REPO_NAME)
+../script.sh
