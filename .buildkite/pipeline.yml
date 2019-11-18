@@ -12,31 +12,20 @@
 #   - label: shell meta
 #     env:
 #       REPO_NAME: "NO REPO_NAME"
-#     commands: 
+#     commands:
 #       - ./.buildkite/script.sh
 #       - 'echo $$REPO_NAME'
 
 #   - wait
 
 #   - label: perisited env
-#     commands: 
+#     commands:
 #       - 'echo $$REPO_NAME'
 
 steps:
   - label: "test"
     commands: make test
-
   - wait
-  
-  - trigger: "hack-pipeline"
-    label: ":rocket: build"
-    build:
-      message: "${BUILDKITE_MESSAGE}"
-      commit: "${BUILDKITE_COMMIT}"
-      branch: "${BUILDKITE_BRANCH}"
-
-  - wait
-
   - label: perisited env
-    commands: 
-      - 'echo done'
+    commands:
+      - "echo done"
