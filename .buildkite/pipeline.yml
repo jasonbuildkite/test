@@ -1,13 +1,9 @@
 steps:
   - command: make test
-    id: tests
 
   - command: echo "should run after tests"; sleep 10; echo "completed"
-    id: dependent
-    depends_on: tests
 
   - command: echo "should run immediately"
-    id: independent
 
   - input: 🚀 Deploy this build...
     id: blocker
@@ -20,6 +16,9 @@ steps:
             label: staging
           - value: production
             label: production
+
+  - wait:
+    if: build.message =~ /dont block/
 
   - command: echo "please deploy like NOW"
     id: deploy-trigger
