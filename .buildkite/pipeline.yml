@@ -1,27 +1,25 @@
-# steps:
-#   - label: "One :golang:"
-#     commands: make test
-
-#   - wait
-
-#   - label: set meta data
-#     command: buildkite-agent meta-data set "REPO_NAME" "bar"
-
-#   - wait
-
-#   - label: shell meta
-#     env:
-#       REPO_NAME: "NO REPO_NAME"
-#     commands:
-#       - ./.buildkite/script.sh
-#       - 'echo $$REPO_NAME'
-
-#   - wait
-
-#   - label: perisited env
-#     commands:
-#       - 'echo $$REPO_NAME'
-
 steps:
-  - label: "test"
-    commands: make test
+  - command: make tests
+    id: tests
+
+  - command: echo "should run after tests"; sleep 10; echo "completed"
+    id: dependent
+    depends_on: tests
+
+  - command: echo "should run immediately"
+    id: independent
+
+  - block: 🚀 Deploy this build...
+    id: blocker
+    fields:
+      - select: Select a server
+        key: deployment-target
+        default: staging
+        options:
+          - value: staging
+            label: staging
+          - value: production
+            label: production
+
+  - command: .buildkite/trigger-deploy
+    id: deploy-trigger
