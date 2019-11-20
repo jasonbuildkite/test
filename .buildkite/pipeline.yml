@@ -1,9 +1,18 @@
 steps:
   - command: make test
 
+  - wait:
+    if: build.message =~ /dont block/
+
   - command: echo "should run after tests"; sleep 10; echo "completed"
 
+  - wait:
+    if: build.message =~ /dont block/
+
   - command: echo "should run immediately"
+
+  - wait:
+    if: build.message =~ /dont block/
 
   - input: 🚀 Deploy this build...
     id: blocker
@@ -16,9 +25,6 @@ steps:
             label: staging
           - value: production
             label: production
-
-  - wait:
-    if: build.message =~ /dont block/
 
   - command: echo "please deploy like NOW"
     id: deploy-trigger
