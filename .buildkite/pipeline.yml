@@ -1,5 +1,5 @@
 steps:
-  - command: make tests
+  - command: make test
     id: tests
 
   - command: echo "should run after tests"; sleep 10; echo "completed"
