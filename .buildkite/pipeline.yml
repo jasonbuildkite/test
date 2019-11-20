@@ -6,7 +6,6 @@ steps:
   - command: echo "should run immediately"
 
   - input: 🚀 Deploy this build...
-    id: blocker
     fields:
       - select: Select a server
         key: deployment-target
@@ -18,4 +17,3 @@ steps:
             label: production
 
   - command: echo "please deploy like NOW"
-    id: deploy-trigger
