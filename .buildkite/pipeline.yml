@@ -23,4 +23,3 @@ steps:
 
   - command: echo "please deploy like NOW"
     id: deploy-trigger
-    depends_on: blocker
