@@ -9,7 +9,7 @@ steps:
   - command: echo "should run immediately"
     id: independent
 
-  - block: 🚀 Deploy this build...
+  - input: 🚀 Deploy this build...
     id: blocker
     fields:
       - select: Select a server
