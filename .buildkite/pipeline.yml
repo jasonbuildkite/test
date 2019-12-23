@@ -4,7 +4,7 @@ env:
 
 steps:
   - if: 'build.env("REGEN_CACHE") == "true"'
-    label: "Do REGEN_CACHE"
+    label: "Do REGEN_CACHE!"
     command: 'echo "REGEN_CACHE"'
   - if: 'build.env("REGEN_CACHE") == "false"'
     label: "Do not REGEN_CACHE"
