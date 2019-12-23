@@ -1,3 +1,5 @@
+env: REGEN_CACHE:true
+
 steps:
   - if: 'build.env("REGEN_CACHE") == "true"'
     label: "Do REGEN_CACHE"
