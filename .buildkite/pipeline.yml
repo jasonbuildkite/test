@@ -1,19 +1,8 @@
 steps:
-  - command: make test
-
-  - command: echo "should run after tests"; sleep 10; echo "completed"
-
-  - command: echo "should run immediately"
-
-  - input: 🚀 Deploy this build...
-    fields:
-      - select: Select a server
-        key: deployment-target
-        default: staging
-        options:
-          - value: staging
-            label: staging
-          - value: production
-            label: production
-
-  - command: echo "please deploy like NOW"
+  - if: 'build.env("REGEN_CACHE") == "true"'
+    label: "Do REGEN_CACHE"
+    command: 'echo "REGEN_CACHE"'
+  - if: 'build.env("REGEN_CACHE") == "false"'
+    label: "Do not REGEN_CACHE"
+    command: 'echo NO "REGEN_CACHE"'
+  - command: "echo done"

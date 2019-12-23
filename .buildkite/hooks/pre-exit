@@ -1,4 +1,0 @@
-set -eu
-echo '--- :house_with_garden: Call Script'
-
-touch /tmp/dummy.txt
