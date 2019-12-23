@@ -1,5 +1,6 @@
 env:
-  - REGEN_CACHE:true
+  REGEN_CACHE: true
+  SOME_VALUE: true
 
 steps:
   - if: 'build.env("REGEN_CACHE") == "true"'
