@@ -3,10 +3,10 @@ env:
   SOME_VALUE: true
 
 steps:
-  - if: 'build.env("REGEN_CACHE") == "true"'
+  - if: 'build.env("SOME_VALUE") == "true"'
     label: "Do REGEN_CACHE"
     command: 'echo "REGEN_CACHE"'
-  - if: 'build.env("REGEN_CACHE") == "false"'
+  - if: 'build.env("SOME_VALUE") == "false"'
     label: "Do not REGEN_CACHE"
     command: 'echo NO "REGEN_CACHE"'
   - command: "echo done"
